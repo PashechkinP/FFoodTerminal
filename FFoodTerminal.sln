@@ -1,0 +1,45 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35122.118
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FFoodTerminal", "FFoodTerminal\FFoodTerminal.csproj", "{7F9A03DD-51FB-4BA8-B461-1F6886A10F0C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{2C683C4B-A76E-49F2-87F5-90BC57301650}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FFoodTerminal.Domain", "FFoodTerminal.Domain\FFoodTerminal.Domain.csproj", "{DA147B1B-A51C-4C8F-8537-283800CCD974}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataAccessLayer", "DataAccessLayer", "{A9CA15AD-1BC5-4D3E-B1D3-076EBFF84E83}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FFoodTerminal.DataAccessLayer", "FFoodTerminal.DataAccessLayer\FFoodTerminal.DataAccessLayer.csproj", "{EC15201B-A26F-4646-966E-915F06114878}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7F9A03DD-51FB-4BA8-B461-1F6886A10F0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F9A03DD-51FB-4BA8-B461-1F6886A10F0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F9A03DD-51FB-4BA8-B461-1F6886A10F0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F9A03DD-51FB-4BA8-B461-1F6886A10F0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA147B1B-A51C-4C8F-8537-283800CCD974}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA147B1B-A51C-4C8F-8537-283800CCD974}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA147B1B-A51C-4C8F-8537-283800CCD974}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA147B1B-A51C-4C8F-8537-283800CCD974}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC15201B-A26F-4646-966E-915F06114878}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC15201B-A26F-4646-966E-915F06114878}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC15201B-A26F-4646-966E-915F06114878}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC15201B-A26F-4646-966E-915F06114878}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DA147B1B-A51C-4C8F-8537-283800CCD974} = {2C683C4B-A76E-49F2-87F5-90BC57301650}
+		{EC15201B-A26F-4646-966E-915F06114878} = {A9CA15AD-1BC5-4D3E-B1D3-076EBFF84E83}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8142DAE3-8D65-4849-AE07-8BBA8803222C}
+	EndGlobalSection
+EndGlobal
