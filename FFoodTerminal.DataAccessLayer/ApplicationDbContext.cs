@@ -16,5 +16,13 @@ namespace FFoodTerminal.DataAccessLayer
         }
 
         public DbSet<ProductEntity> ProductEntity { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<ProductEntity>().ToTable("Products");
+        }
+
     }
 }
