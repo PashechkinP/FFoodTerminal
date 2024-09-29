@@ -1,3 +1,4 @@
+using FFoodTerminal.DataAccessLayer.Interfaces;
 using FFoodTerminal.Domain.Entities;
 using FFoodTerminal.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -7,22 +8,25 @@ namespace FFoodTerminal.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        //private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        //public HomeController(ILogger<HomeController> logger)
+        //{
+        //    _logger = logger;
+        //}
+
+        private readonly IProductRepository _productRepository;
+
+        public HomeController(IProductRepository productRepository)
         {
-            _logger = logger;
+            _productRepository = productRepository;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> IndexAsync()
         {
-            ProductEntity productEntity = new ProductEntity()
-            {
-                Name = "Burger",
-                Description = "norm takoi buter"
-            };
+            var response = await _productRepository.Select();
 
-            return View(productEntity);
+            return View();
         }
 
         public IActionResult Privacy()

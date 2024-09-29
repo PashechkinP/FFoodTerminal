@@ -1,5 +1,8 @@
 using FFoodTerminal.DataAccessLayer;
+using FFoodTerminal.DataAccessLayer.Interfaces;
+using FFoodTerminal.DataAccessLayer.Repositories;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Identity.Client;
 
 namespace FFoodTerminal
 {
@@ -17,6 +20,8 @@ namespace FFoodTerminal
                 {
                     options.UseSqlServer(builder.Configuration.GetConnectionString(nameof(ApplicationDbContext)));
                 });
+
+            builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
             var app = builder.Build();
 

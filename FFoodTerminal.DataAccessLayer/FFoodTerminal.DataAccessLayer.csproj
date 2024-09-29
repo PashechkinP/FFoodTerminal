@@ -18,9 +18,4 @@
     <ProjectReference Include="..\FFoodTerminal.Domain\FFoodTerminal.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Interfaces\" />
-    <Folder Include="Repositories\" />
-  </ItemGroup>
-
 </Project>
