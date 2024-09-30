@@ -18,24 +18,28 @@ namespace FFoodTerminal.DataAccessLayer.Repositories
             _context=context;
         }
 
-        public Task<bool> Create(ProductEntity entity)
+        public async Task<bool> Create(ProductEntity entity)
         {
-            throw new NotImplementedException();
+            await _context.ProductEntity.AddAsync(entity);
+            await _context.SaveChangesAsync();
+            return true;
         }
 
-        public Task<bool> Delete(ProductEntity entity)
+        public async Task<bool> Delete(ProductEntity entity)
         {
-            throw new NotImplementedException();
+            _context.ProductEntity.Remove(entity);
+            await _context.SaveChangesAsync();
+            return true;
         }
 
-        public Task<ProductEntity> Get(int id)
+        public async Task<ProductEntity> Get(int id)
         {
-            throw new NotImplementedException();
+            return await _context.ProductEntity.FirstOrDefaultAsync(p => p.Id == id);
         }
 
-        public Task<ProductEntity> GetByName(string name)
+        public async Task<ProductEntity> GetByName(string name)
         {
-            throw new NotImplementedException();
+            return await _context.ProductEntity.FirstOrDefaultAsync(p => p.Name == name);
         }
 
         public async Task<List<ProductEntity>> Select()

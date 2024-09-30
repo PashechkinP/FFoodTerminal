@@ -15,16 +15,10 @@ namespace FFoodTerminal.Controllers
         //    _logger = logger;
         //}
 
-        private readonly IProductRepository _productRepository;
-
-        public HomeController(IProductRepository productRepository)
-        {
-            _productRepository = productRepository;
-        }
+        
 
         public async Task<IActionResult> IndexAsync()
         {
-            var response = await _productRepository.Select();
 
             return View();
         }
