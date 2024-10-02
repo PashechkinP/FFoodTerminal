@@ -17,6 +17,7 @@
   <ItemGroup>
     <ProjectReference Include="..\FFoodTerminal.DataAccessLayer\FFoodTerminal.DataAccessLayer.csproj" />
     <ProjectReference Include="..\FFoodTerminal.Domain\FFoodTerminal.Domain.csproj" />
+    <ProjectReference Include="..\FFoodTerminal.Service\FFoodTerminal.Service.csproj" />
   </ItemGroup>
 
 </Project>
