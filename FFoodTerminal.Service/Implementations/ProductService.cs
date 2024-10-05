@@ -163,5 +163,39 @@ namespace FFoodTerminal.Service.Implementations
             }
         }
 
+
+        public async Task<IBaseResponse<ProductEntity>> EditProductService(int id, ProductViewModel productViewModel)
+        {
+            var baseResponse = new BaseResponse<ProductEntity>();
+            try
+            {
+                var product = await _productRepository.Get(id);
+                if (product == null)
+                {
+                    baseResponse.StatusCode = StatusCode.ProductNotFound;
+                    baseResponse.DescriptionError = "Product not found";
+                    return baseResponse;
+                }
+
+                product.Name = productViewModel.Name;
+                product.Description = productViewModel.Description;
+                product.Category = productViewModel.Category;
+                product.Price = productViewModel.Price;
+
+                await _productRepository.Update(product);
+
+                return baseResponse;
+            }
+            catch (Exception ex)
+            {
+                return new BaseResponse<ProductEntity>()
+                {
+                    DescriptionError = $"[EditCarsSevice] : {ex.Message}",
+                    StatusCode = StatusCode.InternalServerError,
+
+                };
+            }
+        }
+
     }
 }

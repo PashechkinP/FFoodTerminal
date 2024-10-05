@@ -1,6 +1,7 @@
 using FFoodTerminal.DataAccessLayer;
 using FFoodTerminal.DataAccessLayer.Interfaces;
 using FFoodTerminal.DataAccessLayer.Repositories;
+using FFoodTerminal.Service.Implementations;
 using FFoodTerminal.Service.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Client;
@@ -23,7 +24,7 @@ namespace FFoodTerminal
                 });
 
             builder.Services.AddScoped<IProductRepository, ProductRepository>();
-            builder.Services.AddScoped<IProductService, IProductService>();
+            builder.Services.AddScoped<IProductService, ProductService>();
 
             var app = builder.Build();
 

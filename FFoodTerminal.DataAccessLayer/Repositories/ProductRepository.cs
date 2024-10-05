@@ -46,5 +46,13 @@ namespace FFoodTerminal.DataAccessLayer.Repositories
         {
             return await _context.ProductEntity.ToListAsync();
         }
+
+        public async Task<ProductEntity> Update(ProductEntity entity)
+        {
+            _context.ProductEntity.Update(entity);
+            await _context.SaveChangesAsync();
+
+            return entity;
+        }
     }
 }
