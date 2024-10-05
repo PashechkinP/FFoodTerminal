@@ -16,7 +16,7 @@ namespace FFoodTerminal.Controllers
         [HttpGet]
         public async Task<IActionResult> GetProducts()
         {
-            var response = await _productService.GetProducts();
+            var response = await _productService.GetProductsService();
             if(response.StatusCode == Domain.Enum.StatusCode.OK)
             {
                 return View(response.Data);

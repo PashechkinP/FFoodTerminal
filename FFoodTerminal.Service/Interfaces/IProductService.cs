@@ -10,6 +10,6 @@ namespace FFoodTerminal.Service.Interfaces
 {
     public interface IProductService
     {
-        Task<IBaseResponse<IEnumerable<ProductEntity>>> GetProducts();
+        Task<IBaseResponse<IEnumerable<ProductEntity>>> GetProductsService();
     }
 }
