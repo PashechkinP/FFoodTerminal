@@ -80,6 +80,8 @@ namespace FFoodTerminal.Service.Implementations
                 };
             }
         }
+
+        // Возможно здесь надо передавать ProductViewModel
         public async Task<IBaseResponse<IEnumerable<ProductEntity>>> GetProductsService()
         {
             var baseResponse = new BaseResponse<IEnumerable<ProductEntity>>();

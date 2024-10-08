@@ -52,7 +52,7 @@ namespace FFoodTerminal.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public async Task<IActionResult> Save(int id)
         {
             if (id == 0)
