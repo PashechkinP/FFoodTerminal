@@ -1,7 +1,7 @@
 ﻿@model FFoodTerminal.Domain.ViewModels.Product.ProductViewModel
 
 @{
-    ViewBag.Title = "title";
+    ViewBag.Title = "Добавление";
     Layout = "_Layout";
 }
 
@@ -17,8 +17,8 @@
                 <h3 class="mb-0 text-center ParagraphHome">@textTitle</h3>
             </div>
             <div class="card-body">
-                <form asp-action="Save" enctype="multipart/form-data">
-                    <input asp-for="Id" hidden />
+                <form asp-controller="Product" asp-action="SaveProduct" enctype="multipart/form-data"> @* id="formSaveProduct"> *@
+                    @* <input asp-for="Id" hidden /> *@
                     <div asp-validation-summary="All" style="font-size:23px; font-family:Impact, serif" class="text-danger text-center"></div>
                     <div class="form-group">
                         <label asp-for="Name"></label>
@@ -34,8 +34,13 @@
                         <span class="input-group-text">.00</span>
                     </div>
                     <div class="form-group">
-                        <select class="form-control" asp-for="Category" id="carTypeId"></select>
+                        <label asp-for="Category"></label>
+                        <textarea asp-for="Category" class="form-control"></textarea>
                     </div>
+                    @* <div class="form-group">
+                        <label asp-for="Category"></label>
+                        <select class="form-control" asp-for="Category" id="carTypeId"></select>
+                    </div> *@
                     <div class="input-group mb-3">
                       <input asp-for="Avatar" class="form-control" type="file">
                     </div>
@@ -45,3 +50,9 @@
         </div>
     </div>
 </div>
+
+<style>
+    label {
+        color: black;
+    }
+</style>

@@ -1,4 +1,4 @@
-﻿﻿
+﻿
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +16,7 @@
 <body class="backgroundImage">
     <header>
         <nav class="navbar navbar-expand-lg" style="background-color: white;">
-            <a class="navbar-brand" asp-controller="Home" asp-action="Index"><span style="color:black; font-family:Impact; font-size:30px; background-color:white; border-radius:10px;">FFood Terminal</span>@*<img src="~/Img/LSKIcon.jpg" style="width:30px; height: 30px; border-radius: 10px;">*@</a>
+            <a class="navbar-brand" asp-controller="Home" asp-action="Index"><span style="color:black; font-family:Impact; font-size:30px; background-color:white; border-radius:10px;">FFoodTerminal</span>@*<img src="~/Img/LSKIcon.jpg" style="width:30px; height: 30px; border-radius: 10px;">*@</a>
             <button class="navbar-toggler badge-light" style="border-radius:10px;" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-caret-down-square-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm4 4a.5.5 0 0 0-.374.832l4 4.5a.5.5 0 0 0 .748 0l4-4.5A.5.5 0 0 0 12 6H4z" />
@@ -52,11 +52,11 @@
                             </div>
                         </li>
                     }
-                    @if (User.Identity.IsAuthenticated)
+                    @if (!User.Identity.IsAuthenticated)
                     {
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle paragraphLayout active text-black" href="#" data-toggle="dropdown" style="font-family:'Comic Sans MS'; font-weight: bold;">
-                                Продукты
+                                Хавка
                             </a>
                             <div class="dropdown-menu">
                                 <div class="container">
@@ -64,10 +64,15 @@
                                         <div class="col-md-12">
                                             <ul class="nav flex-column paragraphHome">
                                                 <li class="nav-item text-center">
-                                                    <a class="nav-link active text-white" asp-controller="Product" asp-action="List">
+                                                    <a class="nav-link active text-white" asp-controller="Product" asp-action="GetProducts">
                                                         Список
                                                     </a>
                                                 </li>
+                                                @* <li class="nav-item text-center">
+                                                    <a class="nav-link active text-white" asp-controller="Product" asp-action="SaveProduct">
+                                                        Добавление
+                                                    </a>
+                                                </li> *@
                                             </ul>
                                         </div>
                                     </div>
@@ -87,12 +92,12 @@
                                         <div class="col-md-12">
                                             <ul class="nav flex-column paragraphHome">
                                                 <li class="nav-item text-center">
-                                                    <a class="nav-link active text-white" asp-controller="Product" asp-action="Save">
-                                                        Добавление
+                                                    <a class="nav-link active text-white" asp-controller="Product" asp-action="SaveProduct">
+                                                        Добавление продукта
                                                     </a>
                                                 </li>
                                                 <li class="nav-item text-center">
-                                                    <a class="nav-link active text-white" asp-controller="Admin" asp-action="Index">
+                                                    <a class="nav-link active text-white" asp-controller="" asp-action="Index">
                                                         Пользователи
                                                     </a>
                                                 </li>
@@ -116,7 +121,7 @@
     </header>
     <div class="container-fluid col-xl-12">
         <main role="main">
-            @RenderBody()  @* // Этот метод нужен чтобы рендерить все представления из layout *@
+            @RenderBody()
         </main>
     </div>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
@@ -125,4 +130,3 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("pageScripts", required: false)
 </body>
-</html>

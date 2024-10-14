@@ -1,4 +1,5 @@
-﻿@model List<FFoodTerminal.Domain.Entities.ProductEntity> // IEnumerable instead of List
+﻿@using FFoodTerminal.Domain.ViewModels.Product
+@model List<FFoodTerminal.Domain.Entities.ProductEntity> // IEnumerable instead of List
 
 @{
     ViewData["Title"] = "GetProducts";
@@ -66,8 +67,7 @@ else
             <div class="row row-cols-1 col-md-4 text-center">
                 <div class="col" style="padding: 10px;">
                     <div class="card">
-                        <img src="https://images.wallpaperscraft.ru/image/single/mercedes_benz_s_class_w222_112850_800x600.jpg" class="card-img-top" alt="@product.Name">
-                        <div class="card-body">
+                        <img src="data:image/jpeg;base64,@Convert.ToBase64String(product.Avatar ?? Array.Empty<byte>())" class="card-img-top" alt="@product.Name">                        <div class="card-body">
                             <h5 class="card-title">@product.Name</h5>
                             <p class="card-text">@product.Description</p>
                         </div>
@@ -82,7 +82,7 @@ else
                             {
                                 <hr />
                                 <a asp-controller="Product" asp-action="Delete" asp-route-id="@product.Id" class="btn btn-danger">Удалить</a>
-                                <a asp-controller="Product" asp-action="Save" asp-route-id="@product.Id" class="btn btn-primary">Изменить</a>
+                                <a asp-controller="Product" asp-action="SaveProduct" asp-route-id="@product.Id" class="btn btn-primary">Изменить</a>
                             }
                         </div>
                     </div>

@@ -1,6 +1,5 @@
 using FFoodTerminal.DataAccessLayer.Interfaces;
 using FFoodTerminal.Domain.Entities;
-using FFoodTerminal.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -14,24 +13,23 @@ namespace FFoodTerminal.Controllers
         //{
         //    _logger = logger;
         //}
-
+            public IActionResult Index() => View();
         
+        //public async Task<IActionResult> IndexAsync()
+        //{
 
-        public async Task<IActionResult> IndexAsync()
-        {
+        //    return View();
+        //}
 
-            return View();
-        }
+        //public IActionResult Privacy()
+        //{
+        //    return View();
+        //}
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+        //[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        //public IActionResult Error()
+        //{
+        //    return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        //}
     }
 }

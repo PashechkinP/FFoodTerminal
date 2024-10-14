@@ -4,12 +4,13 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace FFoodTerminal.DataAccessLayer.Repositories
 {
-    public class ProductRepository : IProductRepository
+    public class ProductRepository : IBaseRepository<ProductEntity>
     {
         private readonly ApplicationDbContext _context;
 
@@ -18,38 +19,26 @@ namespace FFoodTerminal.DataAccessLayer.Repositories
             _context=context;
         }
 
-        public async Task<bool> Create(ProductEntity entity)
+        public async Task Create(ProductEntity entity)
         {
-            await _context.ProductEntity.AddAsync(entity);
+            await _context.ProductsDbSet.AddAsync(entity);
             await _context.SaveChangesAsync();
-            return true;
         }
 
-        public async Task<bool> Delete(ProductEntity entity)
+        public IQueryable<ProductEntity> GetAll()
         {
-            _context.ProductEntity.Remove(entity);
+            return _context.ProductsDbSet;
+        }
+
+        public async Task Delete(ProductEntity entity)
+        {
+            _context.ProductsDbSet.Remove(entity);
             await _context.SaveChangesAsync();
-            return true;
-        }
-
-        public async Task<ProductEntity> Get(int id)
-        {
-            return await _context.ProductEntity.FirstOrDefaultAsync(p => p.Id == id);
-        }
-
-        public async Task<ProductEntity> GetByName(string name)
-        {
-            return await _context.ProductEntity.FirstOrDefaultAsync(p => p.Name == name);
-        }
-
-        public async Task<List<ProductEntity>> Select()
-        {
-            return await _context.ProductEntity.ToListAsync();
         }
 
         public async Task<ProductEntity> Update(ProductEntity entity)
         {
-            _context.ProductEntity.Update(entity);
+            _context.ProductsDbSet.Update(entity);
             await _context.SaveChangesAsync();
 
             return entity;

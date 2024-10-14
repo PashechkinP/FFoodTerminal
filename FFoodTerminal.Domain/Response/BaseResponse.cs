@@ -19,6 +19,7 @@ namespace FFoodTerminal.Domain.Response
 
     public interface IBaseResponse<T>
     {
+        string DescriptionError { get; set; }
         StatusCode StatusCode { get; }
         T Data { get; }
     }

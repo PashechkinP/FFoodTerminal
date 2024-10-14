@@ -19,12 +19,11 @@ namespace FFoodTerminal.Controllers
         public async Task<IActionResult> GetProducts()
         {
             var response = await _productService.GetProductsService();
-            if(response.StatusCode == Domain.Enum.StatusCode.OK)
+            if (response.StatusCode == Domain.Enum.StatusCode.OK)
             {
-                return View(response.Data);
+                return View(response.Data.ToList());
             }
-
-            return RedirectToAction("Error");
+            return View("Error", $"{response.DescriptionError}");
         }
 
         [HttpGet]
@@ -35,54 +34,58 @@ namespace FFoodTerminal.Controllers
             {
                 return View(response.Data);
             }
-
-            return RedirectToAction("Error");
+            return View("Error", $"{response.DescriptionError}");
         }
 
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> DeleteProduct(int id)
         {
             var response = await _productService.DeleteProductService(id);
-            if(response.StatusCode == Domain.Enum.StatusCode.OK)
+            if (response.StatusCode == Domain.Enum.StatusCode.OK)
             {
                 return RedirectToAction("GetProducts");
             }
-
-            return RedirectToAction("Error");
+            return View("Error", $"{response.DescriptionError}");
         }
 
         [HttpGet]
-        //[Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Save(int id)
+        public async Task<IActionResult> SaveProduct(int id)
         {
             if (id == 0)
-            {
+
                 return View();
-            }
+
             var response = await _productService.GetProductService(id);
 
             if (response.StatusCode == Domain.Enum.StatusCode.OK)
             {
                 return View(response.Data);
             }
-            return RedirectToAction("Error");
+            return View("Error", $"{response.DescriptionError}");
         }
 
         [HttpPost]
-        public async Task<IActionResult> Save(ProductViewModel productModel)
+        public async Task<IActionResult> SaveProduct(ProductViewModel model)
         {
-            if(ModelState.IsValid)
+            
+            if (ModelState.IsValid)
             {
-                if(productModel.Id == 0)
+                if (model.Id == 0)
                 {
-                    await _productService.CreateProductService(productModel);
+                    byte[] imageData;
+                    using (var binaryReader = new BinaryReader(model.Avatar.OpenReadStream()))
+                    {
+                        imageData = binaryReader.ReadBytes((int)model.Avatar.Length);
+                    }
+                    await _productService.CreateProductService(model, imageData);
                 }
                 else
                 {
-                    await _productService.EditProductService(productModel.Id, productModel);
+                    await _productService.EditProductService(model.Id, model);
                 }
+                return RedirectToAction("GetProducts");
             }
-            return RedirectToAction("GetProducts");
+            return View();
         }
 
     }

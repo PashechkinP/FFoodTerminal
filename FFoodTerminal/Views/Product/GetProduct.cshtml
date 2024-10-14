@@ -1,4 +1,4 @@
-﻿@model FFoodTerminal.Domain.Entities.ProductEntity
+﻿@model FFoodTerminal.Domain.ViewModels.Product.ProductViewModel
 
 @{
     ViewData["Title"] = "GetProduct";
@@ -9,15 +9,15 @@
 <div class="card mb-3">
     <div class="row g-0">
         <div class="col-md-4">
-            <img src="https://images.wallpaperscraft.ru/image/single/mercedes_benz_s_class_w222_112850_800x600.jpg"
-                 class="img-fluid rounded-start rounded" alt="@Model?.Name">
+            <      <img src="data:image/jpeg;base64,@Convert.ToBase64String(Model?.Image ?? Array.Empty<byte>())"
+                        class="img-fluid rounded-start rounded" alt="@Model?.Name">
         </div>
         <div class="col-md-4">
             <div class="card-body">
                 <h5 class="card-title text-center">@Model?.Name</h5>
                 <p class="card-text"><b>Описание: </b>@Model?.Description</p>
                 <p class="card-text"><b>Стоимость: </b>@Model?.Price ₽</p>
-                <p class="card-text"><b>Модель: </b>@Model?.Category</p>
+                <p class="card-text"><b>Категория: </b>@Model?.Category</p>
             </div>
         </div>
         <div class="col-md-4">

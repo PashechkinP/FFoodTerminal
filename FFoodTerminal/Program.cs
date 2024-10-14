@@ -1,8 +1,10 @@
 using FFoodTerminal.DataAccessLayer;
 using FFoodTerminal.DataAccessLayer.Interfaces;
 using FFoodTerminal.DataAccessLayer.Repositories;
+using FFoodTerminal.Domain.Entities;
 using FFoodTerminal.Service.Implementations;
 using FFoodTerminal.Service.Interfaces;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Client;
 
@@ -23,8 +25,20 @@ namespace FFoodTerminal
                     options.UseSqlServer(builder.Configuration.GetConnectionString(nameof(ApplicationDbContext)));
                 });
 
-            builder.Services.AddScoped<IProductRepository, ProductRepository>();
+            builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.LoginPath = new PathString("/Account/Login");
+        options.AccessDeniedPath = new PathString("/Account/Login");
+    });
+
             builder.Services.AddScoped<IProductService, ProductService>();
+            builder.Services.AddScoped<IAccountService, AccountService>();
+            builder.Services.AddScoped<IBaseRepository<ProductEntity>, ProductRepository>();
+            builder.Services.AddScoped<IBaseRepository<UserEntity>, UserRepository>();
+
+
+
 
             var app = builder.Build();
 
@@ -41,7 +55,9 @@ namespace FFoodTerminal
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
+
 
             app.MapControllerRoute(
                 name: "default",

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,14 +12,25 @@ namespace FFoodTerminal.Domain.ViewModels.Product
     {
         public int Id { get; set; }
 
-        public string Name { get; set; } = string.Empty;
+        [Display(Name = "Название")]
+        [Required(ErrorMessage = "Введите название")]
+        [MinLength(2, ErrorMessage = "Минимальная длина должна быть больше двух символов")]
+        public string Name { get; set; }
 
-        public string Description { get; set; } = string.Empty;
+        [Display(Name = "Описание")]
+        public string Description { get; set; }
 
-        public string Category { get; set; } = string.Empty;
+        [Display(Name = "Категория")]
+        [Required(ErrorMessage = "Укажите категорию")]
+        [MinLength(2, ErrorMessage = "Минимальная длина должна быть больше двух символов")]
+        public string Category { get; set; }
 
+        [Display(Name = "Стоимость")]
+        [Required(ErrorMessage = "Укажите стоимость")]
         public decimal Price { get; set; }
 
         public IFormFile Avatar { get; set; }
+
+        public byte[]? Image { get; set; }
     }
 }

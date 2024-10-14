@@ -8,13 +8,13 @@ namespace FFoodTerminal.DataAccessLayer.Interfaces
 {
     public interface IBaseRepository<T> // T это дженерик, вместо него потом везде подставится ProductEntity
     {
-        Task<bool> Create(T entity);
+        Task Create(T entity);
 
-        Task<T> Get(int id);
+        IQueryable<T> GetAll(); // Чтобы Linq использовать при получении списка с условиями
 
-        Task<List<T>> Select();
+        //Task<List<T>> Select();
 
-        Task<bool> Delete(T entity);
+        Task Delete(T entity);
 
         Task<T> Update(T entity);
     }
