@@ -154,7 +154,7 @@ namespace FFoodTerminal.Service.Implementations
             }
         }
 
-        public async Task<IBaseResponse<ProductEntity>> EditProductService(int id, ProductViewModel model)
+        public async Task<IBaseResponse<ProductEntity>> EditProductService(int id, ProductViewModel model, byte[] imageData)
         {
             try
             {
@@ -172,6 +172,7 @@ namespace FFoodTerminal.Service.Implementations
                 product.Description = model.Description;
                 product.Category = model.Category;
                 product.Price = model.Price;
+                product.Avatar = imageData;
                 await _productRepository.Update(product);
 
 

@@ -81,7 +81,12 @@ namespace FFoodTerminal.Controllers
                 }
                 else
                 {
-                    await _productService.EditProductService(model.Id, model);
+                    byte[] imageData;
+                    using (var binaryReader = new BinaryReader(model.Avatar.OpenReadStream()))
+                    {
+                        imageData = binaryReader.ReadBytes((int)model.Avatar.Length);
+                    }
+                    await _productService.EditProductService(model.Id, model, imageData);
                 }
                 return RedirectToAction("GetProducts");
             }

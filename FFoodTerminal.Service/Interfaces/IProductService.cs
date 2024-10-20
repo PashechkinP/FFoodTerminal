@@ -20,7 +20,7 @@ namespace FFoodTerminal.Service.Interfaces
 
         Task<IBaseResponse<ProductEntity>> GetProductByNameService(string name);
 
-        Task<IBaseResponse<ProductEntity>> EditProductService(int id, ProductViewModel model);
+        Task<IBaseResponse<ProductEntity>> EditProductService(int id, ProductViewModel model, byte[] imageData);
 
         Task<IBaseResponse<ProductEntity>> CreateProductService(ProductViewModel car, byte[] imageData);
     }
