@@ -17,5 +17,7 @@ namespace FFoodTerminal.Domain.Entities
         public string Name { get; set; }
 
         public Role Role { get; set; }
+
+        public ProfileEntity? ProfileEntity { get; set; }
     }
 }
