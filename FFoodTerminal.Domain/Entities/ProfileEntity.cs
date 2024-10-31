@@ -16,6 +16,6 @@ namespace FFoodTerminal.Domain.Entities
 
         public long UserEntityId { get; set; }
 
-        public UserEntity? UserEntity { get; set; }
+        public UserEntity UserEntity { get; set; }
     }
 }
