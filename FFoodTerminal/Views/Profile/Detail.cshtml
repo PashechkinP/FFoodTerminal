@@ -15,7 +15,7 @@
                     <div class="mb-3">
                         <label class="form-label text-black-50">Возраст</label>
                         <input type="text" class="form-control" asp-for="Age">
-                        <div class="form-text">Возраст должен быть указан от 0 до 150 лет.</div>
+                        <div class="form-text">Возраст должен быть указан от 0 до 100 лет.</div>
                     </div>
                     <div class="mb-3">
                         <label class="form-label text-black-50">Адрес</label>
@@ -74,11 +74,12 @@
     </div>
 </div>
 
+@* Чтобы сразу получить все данные из формы исп serialize *@
 @section pageScripts
 {
     <script>     
         $('#saveProfileId').on('click', function (e) {
-            e.preventDefault();
+            e.preventDefault(); // чтобы форма не обновлялась после отработки запроса, а то sweetalert не виден
             const data = $('#profileFormId').serialize()
             $.ajax({
                 url: '@Url.Action("Save", "Profile")',

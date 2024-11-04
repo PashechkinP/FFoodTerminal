@@ -1,4 +1,5 @@
 ﻿using FFoodTerminal.DataAccessLayer.Interfaces;
+using FFoodTerminal.DataAccessLayer.Repositories;
 using FFoodTerminal.Domain.Entities;
 using FFoodTerminal.Domain.Enum;
 using FFoodTerminal.Domain.Helpers;
@@ -13,18 +14,21 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace FFoodTerminal.Service.Implementations
 {
     public class AccountService : IAccountService
     {
         private readonly IBaseRepository<UserEntity> _userRepository;
+        private readonly IBaseRepository<ProfileEntity> _profileRepository;
         private ILogger<AccountService> _logger;
 
         public AccountService(IBaseRepository<UserEntity> userRepository,
-            ILogger<AccountService> logger)
+            ILogger<AccountService> logger, IBaseRepository<ProfileEntity> profileRepository)
         {
             _userRepository = userRepository;
+            _profileRepository = profileRepository;
             _logger = logger;
         }
         public async Task<BaseResponse<ClaimsIdentity>> Register(RegisterViewModel model)
@@ -46,6 +50,15 @@ namespace FFoodTerminal.Service.Implementations
                     Password = HashPasswordHelper.HashPassowrd(model.Password),
                 };
                 await _userRepository.Create(user);
+
+                var profile = new ProfileEntity()
+                {
+                    UserEntityId = user.Id,
+                };
+
+                await _profileRepository.Create(profile);
+
+
                 var result = Authenticate(user);
                 return new BaseResponse<ClaimsIdentity>()
                 {
@@ -94,6 +107,42 @@ namespace FFoodTerminal.Service.Implementations
             {
                 _logger.LogError(ex, $"[Login]: {ex.Message}");
                 return new BaseResponse<ClaimsIdentity>()
+                {
+                    DescriptionError = ex.Message,
+                    StatusCode = StatusCode.InternalServerError
+                };
+            }
+        }
+
+        public async Task<BaseResponse<bool>> ChangePassword(ChangePasswordViewModel model)
+        {
+            try
+            {
+                var user = await _userRepository.GetAll().FirstOrDefaultAsync(x => x.Name == model.UserName);
+                if (user == null)
+                {
+                    return new BaseResponse<bool>()
+                    {
+                        StatusCode = StatusCode.UserNotFound,
+                        DescriptionError = "Пользователь не найден"
+                    };
+                }
+
+                user.Password = HashPasswordHelper.HashPassowrd(model.NewPassword);
+                await _userRepository.Update(user);
+
+                return new BaseResponse<bool>()
+                {
+                    Data = true,
+                    StatusCode = StatusCode.OK,
+                    DescriptionError = "Пароль обновлен"
+                };
+
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"[ChangePassword]: {ex.Message}");
+                return new BaseResponse<bool>()
                 {
                     DescriptionError = ex.Message,
                     StatusCode = StatusCode.InternalServerError

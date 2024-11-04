@@ -16,7 +16,7 @@ namespace FFoodTerminal.Controllers
         [HttpPost]
         public async Task<IActionResult> Save(ProfileViewModel model)
         {
-            ModelState.Remove("Id");
+            ModelState.Remove("Id"); // приходит null и валидация запарывается
             ModelState.Remove("UserName");
             if (ModelState.IsValid)
             {

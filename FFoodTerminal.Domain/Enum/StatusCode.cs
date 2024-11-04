@@ -8,7 +8,13 @@ namespace FFoodTerminal.Domain.Enum
 {
     public enum StatusCode
     {
-        ProductNotFound = 0,
+        UserNotFound = 0,
+        UserAlreadyExists = 1,
+
+        ProductNotFound = 10,
+
+        OrderNotFound = 20,
+
         OK = 200,
         InternalServerError = 500
     }

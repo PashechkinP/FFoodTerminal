@@ -12,7 +12,7 @@ namespace FFoodTerminal.Domain.ViewModels.Profile
         public long Id { get; set; }
 
         [Required(ErrorMessage = "Укажите возраст")]
-        [Range(0, 150, ErrorMessage = "Диапазон возраста должен быть от 0 до 150")]
+        [Range(0, 100, ErrorMessage = "Диапазон возраста должен быть от 0 до 100")]
         public byte Age { get; set; }
 
         [Required(ErrorMessage = "Укажите адрес")]
