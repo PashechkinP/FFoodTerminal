@@ -1,4 +1,5 @@
 ﻿using FFoodTerminal.Domain.Enum;
+using System.ComponentModel.DataAnnotations;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -18,6 +19,8 @@ namespace FFoodTerminal.Domain.Entities
 
         public Role Role { get; set; }
 
-        public ProfileEntity? ProfileEntity { get; set; }
+        public ProfileEntity ProfileEntity { get; set; }
+
+        public Basket Basket { get; set; }
     }
 }

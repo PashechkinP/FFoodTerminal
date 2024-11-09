@@ -363,3 +363,4 @@ MigrationBackup/
 FodyWeavers.xsd
 /FFoodTerminal.DataAccessLayer/Migrations
 /FFoodTerminal/appsettings.Development.json
+/FFoodTerminal/wwwroot/lib/select2/

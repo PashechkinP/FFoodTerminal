@@ -15,7 +15,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FFoodTerminal.DataAccessLay
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service", "Service", "{C3CCAD11-81DE-418A-8848-E71D3909EE45}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FFoodTerminal.Service", "FFoodTerminal.Service\FFoodTerminal.Service.csproj", "{DB1EC1EF-E669-4911-9843-364FDD9B05A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FFoodTerminal.Service", "FFoodTerminal.Service\FFoodTerminal.Service.csproj", "{DB1EC1EF-E669-4911-9843-364FDD9B05A2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F4E6820D-305E-452A-A036-29DEC62067E8}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

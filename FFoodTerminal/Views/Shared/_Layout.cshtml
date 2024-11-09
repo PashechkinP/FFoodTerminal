@@ -6,12 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - FFoodTerminal</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+    <link href="https://raw.githack.com/ttskch/select2-bootstrap4-theme/master/dist/select2-bootstrap4.css" rel="stylesheet">
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="~/css/backImage.css" />
     <link rel="stylesheet" href="~/css/menu.css" />
     <link rel="stylesheet" href="~/css/paragraph.css" />
     <link rel="stylesheet" href="~/css/card.css" />
     <link rel="stylesheet" href="~/css/label.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
+    <script src="~/js/modal.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 </head>
 <body class="backgroundImage">
     <header>
@@ -97,9 +103,9 @@
                                                     </a>
                                                 </li>
                                                 <li class="nav-item text-center">
-                                                   @*  <a class="nav-link active text-white" asp-controller="" asp-action="Index">
+                                                    <a class="nav-link active text-white" asp-controller="User" asp-action="GetUsers">
                                                         Пользователи
-                                                    </a> *@
+                                                    </a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -136,10 +142,12 @@
             @RenderBody()
         </main>
     </div>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/lib/jquery/dist/jquery.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+    <script src="~/js/modal.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @await RenderSectionAsync("pageScripts", required: false)
 </body>

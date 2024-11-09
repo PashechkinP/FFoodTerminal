@@ -76,7 +76,8 @@ else
                             <li class="list-group-item">@product.Category</li>
                         </ul>
                         <div class="card-body">
-                            <a asp-action="GetProduct" asp-route-id="@product.Id" class="card-link">Перейти</a>
+                            <a asp-action="GetProduct" asp-route-id="@product.Id" class="card-link">Подробнее</a>
+                            <a asp-controller="Order" asp-action="CreateOrder" asp-route-id="@product.Id" class="btn btn-success">В корзину</a>
                             @* <a asp-controller="Basket" asp-action="Add" asp-route-id="@id" class="card-link">Добавить</a> *@
                             @if (User.IsInRole("Admin"))
                             {

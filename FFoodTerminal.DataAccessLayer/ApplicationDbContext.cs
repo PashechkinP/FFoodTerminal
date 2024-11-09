@@ -46,6 +46,10 @@ namespace FFoodTerminal.DataAccessLayer
 
         public DbSet<ProfileEntity> ProfilesDbSet { get; set; }
 
+        public DbSet<Basket> BasketsDbSet { get; set; }
+
+        public DbSet<Order> OrdersDbSet { get; set; }
+
         //  с помощью modelBuilder соотносим и настраиваем объекты и шарпа с объектами в БД
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -70,6 +74,11 @@ namespace FFoodTerminal.DataAccessLayer
                     .WithOne(x => x.UserEntity)
                     .HasPrincipalKey<UserEntity>(x => x.Id)
                     .OnDelete(DeleteBehavior.Cascade);
+
+                builder.HasOne(x => x.Basket)
+                    .WithOne(x => x.UserEntity)
+                    .HasPrincipalKey<UserEntity>(x => x.Id)
+                    .OnDelete(DeleteBehavior.Cascade);
             });
 
 
@@ -86,6 +95,26 @@ namespace FFoodTerminal.DataAccessLayer
                 builder.Property(x => x.Address).HasMaxLength(200).IsRequired(false);
 
             });
+
+            modelBuilder.Entity<Basket>(builder =>
+            {
+                builder.ToTable("Baskets").HasKey(x => x.Id);
+
+                //builder.HasData(new Basket()
+                //{
+                //    Id = 1,
+                //    UserEntityId = 1
+                //});
+            });
+
+            modelBuilder.Entity<Order>(builder =>
+            {
+                builder.ToTable("Orders").HasKey(x => x.Id);
+
+                builder.HasOne(r => r.Basket).WithMany(t => t.Orders)
+                    .HasForeignKey(r => r.BasketId);
+            });
+
         }
 
    
