@@ -39,6 +39,12 @@ namespace FFoodTerminal
             builder.Services.AddScoped<IBaseRepository<UserEntity>, UserRepository>();
             builder.Services.AddScoped<IProfileService, ProfileService>();
             builder.Services.AddScoped<IBaseRepository<ProfileEntity>, ProfileRepository>();
+            builder.Services.AddScoped<IBaseRepository<Basket>, BasketRepository>();
+            builder.Services.AddScoped<IBaseRepository<Order>, OrderRepository>();
+            builder.Services.AddScoped<IBasketService, BasketService>();
+            builder.Services.AddScoped<IOrderService, OrderService>();
+
+
 
 
             var app = builder.Build();

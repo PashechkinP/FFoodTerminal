@@ -23,13 +23,15 @@ namespace FFoodTerminal.Service.Implementations
         private readonly IBaseRepository<UserEntity> _userRepository;
         private readonly IBaseRepository<ProfileEntity> _profileRepository;
         private ILogger<AccountService> _logger;
+        private readonly IBaseRepository<Basket> _basketRepository;
 
         public AccountService(IBaseRepository<UserEntity> userRepository,
-            ILogger<AccountService> logger, IBaseRepository<ProfileEntity> profileRepository)
+            ILogger<AccountService> logger, IBaseRepository<ProfileEntity> profileRepository, IBaseRepository<Basket> basketRepository)
         {
             _userRepository = userRepository;
             _profileRepository = profileRepository;
             _logger = logger;
+            _basketRepository = basketRepository;
         }
         public async Task<BaseResponse<ClaimsIdentity>> Register(RegisterViewModel model)
         {
@@ -57,6 +59,13 @@ namespace FFoodTerminal.Service.Implementations
                 };
 
                 await _profileRepository.Create(profile);
+
+                var basket = new Basket()
+                {
+                    UserEntityId= user.Id,
+                };
+
+                await _basketRepository.Create(basket);
 
 
                 var result = Authenticate(user);
