@@ -13,6 +13,7 @@ namespace FFoodTerminal.Service.Interfaces
     {
         Task<IBaseResponse<Order>> Create(CreateOrderViewModel model);
 
+
         Task<IBaseResponse<bool>> Delete(long id);
     }
 }

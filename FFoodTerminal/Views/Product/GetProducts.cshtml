@@ -14,8 +14,9 @@
 </style>
 
 <div class="card-buttons-group">
-    <button class="btn btn-danger" id='hideCardsId'>Скрыть</button>
-    <button class='btn btn-success' id='showCardsId'>Показать</button>
+    @* <button class="btn btn-danger" id='hideCardsId'>Скрыть</button>
+    <button class='btn btn-success' id='showCardsId'>Показать</button> *@
+    <button class='btn btn-primary' id='compareBtnId'>Сравнение двух мото</button>
 </div>
 
 <div style="padding: 10px;"></div>
@@ -29,7 +30,7 @@
             </div>
             <div class="col-md-8">
                 <div class="card-body">
-                    <h5 class="card-title text-center">Список продуктов пуст :(</h5>
+                    <h5 class="card-title text-center">Список мотоциклов пуст :(</h5>
                     <p class="card-text">
                         Список пополниться позже, не расстраивайтесь
                     </p>
@@ -77,7 +78,10 @@ else
                         </ul>
                         <div class="card-body">
                             <a asp-action="GetProduct" asp-route-id="@product.Id" class="card-link">Подробнее</a>
-                            <a asp-controller="Order" asp-action="CreateOrder" asp-route-id="@product.Id" class="btn btn-success">В корзину</a>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <a asp-controller="Order" asp-action="CreateOrder" asp-route-id="@product.Id" class="btn btn-success">Оформить заказ</a>
+                            }
                             @* <a asp-controller="Basket" asp-action="Add" asp-route-id="@id" class="card-link">Добавить</a> *@
                             @if (User.IsInRole("Admin"))
                             {
@@ -94,6 +98,48 @@ else
 }
 
 @section pageScripts {
+
+    <script src="~/js/modal.js"></script>
+
+    <script>
+        let modal = $('#modalWhButtons');
+
+        $('#compareBtnId').on('click', function () {
+            $.ajax({
+                type: 'GET',
+                url: '@Url.Action("Compare")',
+                success: function (response) {
+                    $('.modal-dialog').addClass("modal-lg");
+                    modal.find(".modal-body").html(response);
+                    modal.modal('show')
+                }
+            });
+        });
+
+        $(".btn-close").click(function () {
+            modal.modal('hide');
+        });
+
+        // $('#addCarId').on('click', function () {
+        //     $.ajax({
+        //         type: 'GET',
+        //         url: '/Car/Save',
+        //         success: function (response) {
+        //             $('.modal-dialog').removeClass("modal-lg");
+        //             modal.find(".modal-body").html(response);
+        //             modal.modal('show')
+        //         },
+        //         failure: function () {
+        //             modal.modal('hide')
+        //         },
+        //         error: function (response) {
+        //             alert(response.responseText);
+        //         }
+        //     });
+        // });
+
+    </script>
+
     <script>
         const hideCardElement = $('#hideCardsId');
         const showCardElement = $('#showCardsId');

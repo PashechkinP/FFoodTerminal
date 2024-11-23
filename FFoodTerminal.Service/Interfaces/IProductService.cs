@@ -14,7 +14,9 @@ namespace FFoodTerminal.Service.Interfaces
     {
         Task<IBaseResponse<IEnumerable<ProductEntity>>> GetProductsService();
 
-        Task<IBaseResponse<ProductViewModel>> GetProductService(int id);
+        Task<IBaseResponse<ProductViewModel>> GetProductService(long id);
+
+        Task<BaseResponse<Dictionary<int, string>>> GetProductService(string term);
 
         Task<IBaseResponse<bool>> DeleteProductService(int id);
 
@@ -22,6 +24,6 @@ namespace FFoodTerminal.Service.Interfaces
 
         Task<IBaseResponse<ProductEntity>> EditProductService(int id, ProductViewModel model, byte[] imageData);
 
-        Task<IBaseResponse<ProductEntity>> CreateProductService(ProductViewModel car, byte[] imageData);
+        Task<IBaseResponse<ProductEntity>> CreateProductService(ProductViewModel product, byte[] imageData);
     }
 }

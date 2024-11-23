@@ -26,6 +26,8 @@ namespace FFoodTerminal.Controllers
             return View("Error", $"{response.DescriptionError}");
         }
 
+        public IActionResult Compare() => PartialView();
+
         [HttpGet]
         public async Task<IActionResult> GetProduct(int id)
         {
@@ -35,6 +37,13 @@ namespace FFoodTerminal.Controllers
                 return View(response.Data);
             }
             return View("Error", $"{response.DescriptionError}");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> GetProduct(string term)
+        {
+            var response = await _productService.GetProductService(term);
+            return Json(response.Data);
         }
 
         [Authorize(Roles = "Admin")]

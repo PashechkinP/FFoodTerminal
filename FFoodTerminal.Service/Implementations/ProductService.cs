@@ -23,7 +23,7 @@ namespace FFoodTerminal.Service.Implementations
             _productRepository = productRepository;
         }
 
-        public async Task<IBaseResponse<ProductViewModel>> GetProductService(int id)
+        public async Task<IBaseResponse<ProductViewModel>> GetProductService(long id)
         {
             try
             {
@@ -57,6 +57,39 @@ namespace FFoodTerminal.Service.Implementations
                 return new BaseResponse<ProductViewModel>()
                 {
                     DescriptionError = $"[GetProduct] : {ex.Message}",
+                    StatusCode = StatusCode.InternalServerError
+                };
+            }
+        }
+
+        public async Task<BaseResponse<Dictionary<int, string>>> GetProductService(string term)
+        {
+            var baseResponse = new BaseResponse<Dictionary<int, string>>();
+            try
+            {
+                var products = await _productRepository.GetAll()
+                    .Select(x => new ProductViewModel()
+                    {
+                        Id = x.Id,
+                        
+                        Name = x.Name,
+                        Description = x.Description,
+                        Category = x.Category,
+                        
+                        Price = x.Price,
+                        
+                    })
+                    .Where(x => EF.Functions.Like(x.Name, $"%{term}%"))
+                    .ToDictionaryAsync(x => x.Id, t => t.Name);
+
+                baseResponse.Data = products;
+                return baseResponse;
+            }
+            catch (Exception ex)
+            {
+                return new BaseResponse<Dictionary<int, string>>()
+                {
+                    DescriptionError = ex.Message,
                     StatusCode = StatusCode.InternalServerError
                 };
             }

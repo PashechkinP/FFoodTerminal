@@ -1,4 +1,5 @@
 ﻿using FFoodTerminal.Domain.ViewModels.Order;
+using FFoodTerminal.Service.Implementations;
 using FFoodTerminal.Service.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,6 +8,7 @@ namespace FFoodTerminal.Controllers
     public class OrderController : Controller
     {
         private readonly IOrderService _orderService;
+        private readonly IProductService _productService;
 
         public OrderController(IOrderService orderService)
         {
@@ -38,6 +40,8 @@ namespace FFoodTerminal.Controllers
             }
             return StatusCode(StatusCodes.Status500InternalServerError);
         }
+
+       
 
         public async Task<IActionResult> Delete(int id)
         {

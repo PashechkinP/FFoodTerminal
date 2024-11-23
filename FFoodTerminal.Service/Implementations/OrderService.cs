@@ -68,6 +68,8 @@ namespace FFoodTerminal.Service.Implementations
             }
         }
 
+        
+
         public async Task<IBaseResponse<bool>> Delete(long id)
         {
             try
