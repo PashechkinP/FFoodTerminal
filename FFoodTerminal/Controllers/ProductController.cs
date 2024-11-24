@@ -29,7 +29,31 @@ namespace FFoodTerminal.Controllers
         [HttpGet]
         public async Task<IActionResult> GetProductsSport(string categoryName)
         {
-            categoryName = "Напитки";
+            categoryName = "Спорт";
+            var response = await _productService.GetProductsService(categoryName);
+            if (response.StatusCode == Domain.Enum.StatusCode.OK)
+            {
+                return View("GetProducts", response.Data.ToList());
+            }
+            return View("Error", $"{response.DescriptionError}");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetProductsTourist(string categoryName)
+        {
+            categoryName = "Турист";
+            var response = await _productService.GetProductsService(categoryName);
+            if (response.StatusCode == Domain.Enum.StatusCode.OK)
+            {
+                return View("GetProducts", response.Data.ToList());
+            }
+            return View("Error", $"{response.DescriptionError}");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetProductsCruiser(string categoryName)
+        {
+            categoryName = "Круизер";
             var response = await _productService.GetProductsService(categoryName);
             if (response.StatusCode == Domain.Enum.StatusCode.OK)
             {

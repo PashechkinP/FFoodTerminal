@@ -24,6 +24,12 @@
             <div class="card-body">
                 <p class="card-text"><b>Описание: </b>@Model?.Description</p>
             </div>
+            <div class="card-body">
+                <p class="card-text"><b>Макс. скорость: </b>@Model?.Speed<b> км/ч</b></p>
+                <p class="card-text"><b>Разгон до 100 км/ч: </b>@Model?.Acceleration<b> c</b></p>
+                <p class="card-text"><b>Расход на 100 км: </b>@Model?.FuelConsumption<b> л</b></p>
+                <p class="card-text"><b>Дорожный просвет: </b>@Model?.Clearance<b> мм</b></p>
+            </div>
         </div>
     </div>
 </div>

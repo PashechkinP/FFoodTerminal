@@ -25,6 +25,18 @@ namespace FFoodTerminal.Domain.ViewModels.Product
         [MinLength(2, ErrorMessage = "Минимальная длина должна быть больше двух символов")]
         public string Category { get; set; }
 
+        [Display(Name = "Макс. скорость")]
+        public int Speed { get; set; }
+
+        [Display(Name = "Разгон")]
+        public float Acceleration { get; set; }
+
+        [Display(Name = "Расход топлива")]
+        public float FuelConsumption { get; set; }
+
+        [Display(Name = "Дорожный просвет")]
+        public int Clearance { get; set; }
+
         [Display(Name = "Стоимость")]
         [Required(ErrorMessage = "Укажите стоимость")]
         public decimal Price { get; set; }

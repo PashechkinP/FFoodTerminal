@@ -3,6 +3,21 @@
 }
 
 <div style="padding: 10px;"></div>
+
+@if (!User.Identity.IsAuthenticated)
+{
+    <div class="card">
+        <div class="card-header">
+            Вы не авторизовались
+        </div>
+        <div class="card-body">
+            <blockquote class="blockquote mb-0">
+                <p>Для возможности сделать заказ вы должны авторизоваться</p>
+            </blockquote>
+        </div>
+    </div>
+}
+
 @* @if (User.Identity.IsAuthenticated) *@
 {
   <div class="card col-md-12">
@@ -54,10 +69,22 @@
         <p class="card-text">Удобные, проходимые - самое то для путешествия</p>
       </div>
       <div class="card-footer text-center">
-        <a asp-controller="Product" asp-action="GetProducts" class="card-link">Список мотоциклов</a>
+        <a asp-controller="Product" asp-action="GetProductsTourist" class="card-link">Список мотоциклов</a>
       </div>
     </div>
   </div>
+    <div class="col">
+        <div class="card h-100">
+            <img@* src="https://img3.akspic.ru/previews/5/5/7/6/7/176755/176755-zhan_genshin_impact_live-genshin_udar-dzhinsy-gannhild-ninguan-x750.jpg" *@ class="card-img-top card-image" />
+            <div class="card-body text-center">
+                <h5 class="card-title">Круизеры</h5>
+                <p class="card-text">Мотоциклы выходного дня - много железа и хрома</p>
+            </div>
+            <div class="card-footer text-center">
+                <a asp-controller="Product" asp-action="GetProductsCruiser" class="card-link">Список мотоциклов</a>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div style="padding: 10px;"></div>
@@ -89,57 +116,8 @@
   </div>
 </div>
 }
-else
-{
-  <div class="card">
-    <div class="card-header">
-      Вы не авторизовались
-    </div>
-    <div class="card-body">
-      <blockquote class="blockquote mb-0">
-        <p>Для возможности сделать заказ вы должны авторизоваться</p>
-      </blockquote>
-    </div>
-  </div>
-  
-  <div style="padding: 10px;"></div>
-  
-  @* <div class="row row-cols-1 row-cols-md-3 g-4">
-    <div class="col">
-      <div class="card h-100">
-        <img src="~/img/" class="card-img-top" alt="Картофанчик">
-        <div class="card-body">
-          <h5 class="card-title text-center">Недоступно</h5>
-        </div>
-        <div class="card-footer">
-                    <small class="text-muted">Картофанчик</small>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card h-100">
-        <img src="~/img/" class="card-img-top" alt="Вайфу">
-        <div class="card-body">
-          <h5 class="card-title text-center">Недоступно</h5>
-        </div>
-        <div class="card-footer">
-                    <small class="text-muted">Вайфу</small>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card h-100">
-        <img src="~/img/" class="card-img-top" alt="Хрючево">
-        <div class="card-body">
-                    <h5 class="card-title text-center">Хрючево</h5>
-        </div>
-        <div class="card-footer">
-          <small class="text-muted">Хрючево</small>
-        </div>
-      </div>
-    </div>
-  </div> *@
-}
+
+<div style="padding: 10px;"></div>
 
 @section pageScripts
 {

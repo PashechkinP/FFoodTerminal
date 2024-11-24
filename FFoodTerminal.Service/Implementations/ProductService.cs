@@ -42,6 +42,10 @@ namespace FFoodTerminal.Service.Implementations
                     Name = product.Name,
                     Description = product.Description,
                     Category = product.Category,
+                    Speed = product.Speed,
+                    Acceleration = product.Acceleration,
+                    FuelConsumption = product.FuelConsumption,
+                    Clearance = product.Clearance,
                     Price = product.Price,
                     Image = product.Avatar,
                 };
@@ -104,6 +108,10 @@ namespace FFoodTerminal.Service.Implementations
                     Name = model.Name,
                     Description = model.Description,
                     Category = model.Category,
+                    Speed = model.Speed,
+                    Acceleration = model.Acceleration,
+                    FuelConsumption = model.FuelConsumption,
+                    Clearance = model.Clearance,
                     Price = model.Price,
                     Avatar = imageData
                 };
@@ -204,6 +212,10 @@ namespace FFoodTerminal.Service.Implementations
                 product.Name = model.Name;
                 product.Description = model.Description;
                 product.Category = model.Category;
+                product.Speed = model.Speed;
+                product.Acceleration = model.Acceleration;
+                product.FuelConsumption = model.FuelConsumption;
+                product.Clearance = model.Clearance;
                 product.Price = model.Price;
                 product.Avatar = imageData;
                 await _productRepository.Update(product);
@@ -236,7 +248,7 @@ namespace FFoodTerminal.Service.Implementations
                     return new BaseResponse<IEnumerable<ProductEntity>>()
                     {
                         DescriptionError = "Найдено 0 элементов",
-                        StatusCode = StatusCode.OK
+                        StatusCode = StatusCode.InternalServerError,
                     };
                 }
 
@@ -266,7 +278,7 @@ namespace FFoodTerminal.Service.Implementations
                     return new BaseResponse<IEnumerable<ProductEntity>>()
                     {
                         DescriptionError = "Найдено 0 элементов",
-                        StatusCode = StatusCode.OK
+                        StatusCode = StatusCode.InternalServerError,
                     };
                 }
 

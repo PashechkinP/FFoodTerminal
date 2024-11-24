@@ -11,7 +11,7 @@
 
 <div style="padding: 10px;"></div>
  <div class="col-md-12">
-    <div class="card-body">
+    <div class="card-body" style="width: 50rem;">
         <div class="card card-outline-secondary" style="background-color: white">
             <div class="card-header">
                 <h3 class="mb-0 text-center ParagraphHome">@textTitle</h3>
@@ -28,6 +28,7 @@
                         <label asp-for="Description"></label>
                         <textarea asp-for="Description" class="form-control"></textarea>
                     </div>
+                    <br />
                     <div class="input-group mb-3">
                         <span class="input-group-text">₽</span>
                         <input asp-for="Price" type="text" class="form-control">
@@ -37,9 +38,25 @@
                         <label asp-for="Category"></label>
                         <textarea asp-for="Category" class="form-control"></textarea>
                     </div>
+                    <div class="form-group">
+                        <label asp-for="Speed"></label>
+                        <textarea asp-for="Speed" class="form-control"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Acceleration"></label>
+                        <textarea asp-for="Acceleration" class="form-control"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="FuelConsumption"></label>
+                        <textarea asp-for="FuelConsumption" class="form-control"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Clearance"></label>
+                        <textarea asp-for="Clearance" class="form-control"></textarea>
+                    </div>
                     @* <div class="form-group">
                         <label asp-for="Category"></label>
-                        <select class="form-control" asp-for="Category" id="carTypeId"></select>
+                        <select class="form-control" asp-for="Category" id="productTypeId"></select>
                     </div> *@
                     <div class="input-group mb-3">
                       <input asp-for="Avatar" class="form-control" type="file">
