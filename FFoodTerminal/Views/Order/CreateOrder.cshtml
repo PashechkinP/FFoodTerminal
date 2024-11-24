@@ -11,8 +11,8 @@
     <div class="col-sm-6">
         <div class="card">
             <form id="orderFormId">
-                <input asp-for="Login"  />
-                <input asp-for="ProductEntityId"  />
+                <input asp-for="Login" hidden/>
+                <input asp-for="ProductEntityId" hidden/>
                 <div asp-validation-summary="All" style="font-size:23px; font-family:Impact, serif" class="text-danger text-center"></div>
                 <h4 class="text-center">Форма создания заказа</h4>
                 <hr/>
@@ -45,10 +45,10 @@
     </div>
     <div class="col-sm-6">
         <div class="card">
-          <img src="https://img" height="300" width="300" class="card-img-top">
+         @*  <img src="https://img" height="300" width="300" class="card-img-top"> *@
           <div class="card-body">
             <h5 class="card-title">Инструкция получения</h5>
-            <p class="card-text">Как проходит получение хавки:</p>
+            <p class="card-text">Как проходит получение мечты:</p>
           </div>
           <ul class="list-group list-group-flush">
             <li class="list-group-item">○ Делаете заказ</li>
@@ -57,7 +57,7 @@
           </ul>
           <div class="card-body">
             <a asp-controller="Home" asp-action="Index" class="card-link">Главная</a>
-            <a asp-controller="Product" asp-action="GetProducts" class="card-link">Продукты</a>
+            <a asp-controller="Product" asp-action="GetProducts" class="card-link">Мотоциклы</a>
           </div>
         </div>
     </div>

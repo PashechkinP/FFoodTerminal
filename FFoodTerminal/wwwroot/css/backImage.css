@@ -1,5 +1,5 @@
 ﻿.backgroundImage {
-    background-image: url("https://img2.akspic.ru/crops/9/1/1/9/7/179119/179119-stena-kirpich-illustracia-kirpichnaya_kladka-pryamougolnik-1920x1080.jpg");
-    background-size: cover;
-    background-attachment: fixed;
+    background-image: url("https://img3.akspic.ru/crops/1/5/7/1/7/171751/171751-turisticheskiy_mototsikl-motocikl-motocikletnyj_turizm-krejser-harlej_devidson-1920x1080.jpg");
+    background-size: contain;
+    background-attachment: local;
 }
