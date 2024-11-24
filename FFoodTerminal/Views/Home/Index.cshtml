@@ -3,7 +3,7 @@
 }
 
 <div style="padding: 10px;"></div>
-@if (User.Identity.IsAuthenticated)
+@* @if (User.Identity.IsAuthenticated) *@
 {
   <div class="card col-md-12">
   <div class="card-body">
@@ -17,7 +17,7 @@
 
 <div style="padding: 10px;"></div>
 <div class="row row-cols-1 row-cols-md-3 g-4">
-  @if (User.IsInRole("Admin"))
+  @* @if (User.IsInRole("Admin"))
   {
     <div class="col">
       <div class="card h-100">
@@ -31,7 +31,7 @@
         </div>
       </div>
     </div> 
-  }
+  } *@
   <div class="col">
     <div class="card h-100">
       <img @* src="https://img2.akspic.ru/previews/2/5/1/2/7/172152/172152-kartofel_fri-buterbrod-zharene-picca-blyuda_francuzskoj_kuhni-x750.jpg" *@ class="card-img-top card-image"/>
@@ -42,7 +42,7 @@
         </p>
       </div>
       <div class="card-footer text-center">
-        <a asp-controller="Product" asp-action="GetProducts" class="card-link">Список мотоциклов</a>
+        <a asp-controller="Product" asp-action="GetProductsSport" class="card-link">Список мотоциклов</a>
       </div>
     </div>
   </div>

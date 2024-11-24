@@ -16,6 +16,14 @@ namespace FFoodTerminal.Domain.Entities
 
         public string Category { get; set; } = string.Empty;
 
+        public int Speed { get; set; }
+
+        public float Acceleration { get; set; }
+
+        public float FuelConsumption { get; set; }
+
+        public int Clearance {  get; set; }
+
         public decimal Price { get; set; }
 
         public byte[]? Avatar { get; set; }

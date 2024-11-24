@@ -14,6 +14,8 @@ namespace FFoodTerminal.Service.Interfaces
     {
         Task<IBaseResponse<IEnumerable<ProductEntity>>> GetProductsService();
 
+        Task<IBaseResponse<IEnumerable<ProductEntity>>> GetProductsService(string categoryName);
+
         Task<IBaseResponse<ProductViewModel>> GetProductService(long id);
 
         Task<BaseResponse<Dictionary<int, string>>> GetProductService(string term);

@@ -256,5 +256,35 @@ namespace FFoodTerminal.Service.Implementations
             }
         }
 
+        public async Task<IBaseResponse<IEnumerable<ProductEntity>>> GetProductsService(string categoryName)
+        {
+            try
+            {
+                var products = _productRepository.GetAll().Where(p => p.Category == categoryName);
+                if (!products.Any())
+                {
+                    return new BaseResponse<IEnumerable<ProductEntity>>()
+                    {
+                        DescriptionError = "Найдено 0 элементов",
+                        StatusCode = StatusCode.OK
+                    };
+                }
+
+                return new BaseResponse<IEnumerable<ProductEntity>>()
+                {
+                    Data = products,
+                    StatusCode = StatusCode.OK
+                };
+            }
+            catch (Exception ex)
+            {
+                return new BaseResponse<IEnumerable<ProductEntity>>()
+                {
+                    DescriptionError = $"[GetProducts] : {ex.Message}",
+                    StatusCode = StatusCode.InternalServerError
+                };
+            }
+        }
+
     }
 }

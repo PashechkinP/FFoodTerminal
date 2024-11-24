@@ -26,6 +26,18 @@ namespace FFoodTerminal.Controllers
             return View("Error", $"{response.DescriptionError}");
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetProductsSport(string categoryName)
+        {
+            categoryName = "Напитки";
+            var response = await _productService.GetProductsService(categoryName);
+            if (response.StatusCode == Domain.Enum.StatusCode.OK)
+            {
+                return View("GetProducts", response.Data.ToList());
+            }
+            return View("Error", $"{response.DescriptionError}");
+        }
+
         public IActionResult Compare() => PartialView();
 
         [HttpGet]
