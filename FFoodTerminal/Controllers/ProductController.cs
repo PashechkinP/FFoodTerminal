@@ -76,7 +76,7 @@ namespace FFoodTerminal.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> GetProduct(string term)
+        public async Task<IActionResult> GetProduct(string term/*, int page = 1, int pageSize = 5*/)
         {
             var response = await _productService.GetProductService(term);
             return Json(response.Data);

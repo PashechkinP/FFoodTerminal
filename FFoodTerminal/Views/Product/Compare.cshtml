@@ -1,11 +1,13 @@
-﻿﻿<div class="row">
-    <div class="col">
-        <select class="form-control" id="firstCarId"></select>
-    </div>
-    <div class="col">
-        <select class="form-control" id="secondCarId"></select>
-    </div>
-</div>
+﻿
+	﻿<div class="row">
+		<div class="col">
+			<select class="form-control" id="firstCarId"></select>
+		</div>
+		<div class="col">
+			<select class="form-control" id="secondCarId"></select>
+		</div>
+	</div>
+
 
 <div style="padding: 10px;"></div>
 
@@ -63,22 +65,30 @@
   </div>
 </div>
 
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="~/lib/select2/js/select2.full.min.js"></script>
 <script> 
+
 $(document).ready(function () {
-    
+
+        // $.fn.select2.defaults.set("theme", "bootstrap4");
+        $.fn.modal.Constructor.prototype._enforceFocus = function () { };
+
     $('#firstCardId').hide();
     $('#secondCardId').hide();
     $('#warningCardId').hide();
     $('#resultCardId').hide();
     
     let firstCar = null; 
-    let secondCar = null;        
-    
-    $('#firstCarId, #secondCarId').select2({
-       placeholder: "Выберите машину",
-       minimumInputLength: 2,
-       allowClear: true,
+    let secondCar = null;
+
+		$('#firstCarId, #secondCarId').select2({
+            // dropdownParent: $('#modal'),
+            theme: "bootstrap4",
+			placeholder: "Выберите машину",
+			minimumInputLength: 2,
+			allowClear: true,
        ajax: {
             type: "POST",
             url: "@Url.Action("GetProduct", "Product")",
@@ -86,8 +96,8 @@ $(document).ready(function () {
             data: function (params) { 
                 var query = {
                     term: params.term,
-                    page: params.page || 1,
-                    pageSize: params.pageSize || 5
+                    // page: params.page || 1,
+                    // pageSize: params.pageSize || 5
                 };
                 return query;
             },

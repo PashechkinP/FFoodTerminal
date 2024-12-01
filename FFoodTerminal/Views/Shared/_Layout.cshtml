@@ -6,9 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - YourMotoTerminal</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
-    <link href="https://raw.githack.com/ttskch/select2-bootstrap4-theme/master/dist/select2-bootstrap4.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js" defer></script>
+	<link rel="stylesheet" href="~/lib/select2/css/select2.css">
+	<link href="https://cdn.jsdelivr.net/npm/select2-bootstrap4-theme@1.0.0/dist/select2-bootstrap4.min.css" rel="stylesheet">
+    @* <link rel="stylesheet" href="~/select2-bootstrap4.css"> *@
+    @* <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" /> *@
+    @* <link href="https://raw.githack.com/ttskch/select2-bootstrap4-theme/master/dist/select2-bootstrap4.css" rel="stylesheet"> *@
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="~/css/backImage.css" />
     <link rel="stylesheet" href="~/css/menu.css" />
@@ -17,8 +21,8 @@
     <link rel="stylesheet" href="~/css/label.css" />
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
     <script src="~/js/modal.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    @* <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script> *@
 </head>
 <body class="backgroundImage">
     <header>
@@ -94,11 +98,11 @@
                                 </div>
                             </div>
                         </li>
-                        <li class="nav-item dropdown">
+                        @* <li class="nav-item dropdown">
                             <a class="nav-link active text-black" style="font-family:'Comic Sans MS'; font-weight: bold;" asp-controller="Product" asp-action="GetProducts">
                                 Все мотоциклы
                             </a>
-                        </li>
+                        </li> *@
                     }
                 </ul>
 
@@ -110,7 +114,7 @@
                         </a>
                     </div>
 
-                    <a asp-controller="Basket" asp-action="Detail" style="margin-left: 60%">
+                    <a asp-controller="Basket" asp-action="Detail" style="margin-left: 50%">
                         <svg style="color: black;" xmlns="http://www.w3.org/2000/svg" width="37" height="37" fill="currentColor" class="bi bi-basket2-fill" viewBox="0 0 16 16">
                             <path d="M5.929 1.757a.5.5 0 1 0-.858-.514L2.217 6H.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h.623l1.844 6.456A.75.75 0 0 0 3.69 15h8.622a.75.75 0 0 0 .722-.544L14.877 8h.623a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1.717L10.93 1.243a.5.5 0 1 0-.858.514L12.617 6H3.383L5.93 1.757zM4 10a1 1 0 0 1 2 0v2a1 1 0 1 1-2 0v-2zm3 0a1 1 0 0 1 2 0v2a1 1 0 1 1-2 0v-2zm4-1a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0v-2a1 1 0 0 1 1-1z" />
                         </svg>
@@ -138,7 +142,7 @@
         </main>
     </div>
 
-    <div class="modal fade" id="modal" tabindex="-1">
+    <div class="modal fade" id="modal" @* tabindex="-1" *@>
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -146,7 +150,7 @@
                 </div>
                 <div class="modal-body"></div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-close btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                    <button type="button" class="btn btn-close btn-secondary" data-bs-dismiss="modal"></button>
                     @if (User.IsInRole("Admin"))
                     {
                         <button type="button" class="btn btn-primary" id="saveBtn">Сохранить</button>
@@ -156,7 +160,7 @@
         </div>
     </div>
 
-    <div class="modal fade" id="modalWhButtons" tabindex="-1">
+    <div class="modal fade" id="modalWhButtons" @* tabindex="-1" *@>
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -168,12 +172,20 @@
         </div>
     </div>
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @* <script src="~/lib/jquery/dist/jquery.min.js"></script> *@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
     <script src="~/js/modal.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    @* <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+    <script src="~/js/modal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> *@
     
     @await RenderSectionAsync("pageScripts", required: false)
 </body>
